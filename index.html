@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Capacitación en Primeros Auxilios para Docentes - Cruz Roja Argentina
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        overflow-x: hidden;
+      }
+
+      :root {
+        --primary-red: #d62d20;
+        --secondary-red: #b91c1c;
+        --accent-blue: #1e40af;
+        --light-gray: #f8fafc;
+        --medium-gray: #64748b;
+        --dark-gray: #0f172a;
+        --success-green: #059669;
+        --warning-orange: #ea580c;
+        --gradient-primary: linear-gradient(135deg, #d62d20 0%, #b91c1c 100%);
+        --gradient-hero: linear-gradient(
+          135deg,
+          rgba(214, 45, 32, 0.95) 0%,
+          rgba(185, 28, 28, 0.95) 100%
+        );
+        --shadow-card: 0 10px 25px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 20px 40px -6px rgba(0, 0, 0, 0.15),
+          0 8px 16px -4px rgba(0, 0, 0, 0.1);
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        color: var(--primary-red);
+      }
+
+      .logo::before {
+        content: "✚";
+        margin-right: 0.5rem;
+        font-size: 1.8rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--dark-gray);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+        font-size: 0.95rem;
+      }
+
+      .nav-link:hover {
+        color: var(--primary-red);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: var(--primary-red);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .cta-nav {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+        font-size: 0.9rem;
+      }
+
+      .cta-nav:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .mobile-menu {
+        display: none;
+        background: var(--primary-red);
+        color: white;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+
+      .hero {
+        min-height: 100vh;
+        background: var(--gradient-hero),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+        background-size: cover, 40px 40px;
+        background-position: center, center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 1rem;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+      }
+
+      .hero p {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+      }
+
+      .btn-primary {
+        background: white;
+        color: var(--primary-red);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+        border: 2px solid transparent;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: white;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+        padding-top: 3rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat-number {
+        display: block;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        opacity: 0.8;
+      }
+
+      .problem-section {
+        padding: 4rem 0;
+        background: var(--light-gray);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-subtitle {
+        color: var(--primary-red);
+        font-weight: 600;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        font-weight: 800;
+        color: var(--dark-gray);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .section-description {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        color: var(--medium-gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .problem-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: var(--shadow-card);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .problem-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .problem-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient-primary);
+      }
+
+      .problem-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+      }
+
+      .problem-card h3 {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-weight: 700;
+        color: var(--dark-gray);
+        margin-bottom: 1rem;
+      }
+
+      .problem-card p {
+        color: var(--medium-gray);
+        line-height: 1.7;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+      }
+
+      .solution-section {
+        padding: 4rem 0;
+        background: white;
+      }
+
+      .solution-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .solution-text h2 {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        font-weight: 800;
+        color: var(--dark-gray);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .solution-text p {
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+        color: var(--medium-gray);
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+
+      .features-list {
+        list-style: none;
+        margin-bottom: 2rem;
+      }
+
+      .features-list li {
+        padding: 0.75rem 0;
+        color: var(--medium-gray);
+        position: relative;
+        padding-left: 2rem;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+      }
+
+      .features-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--success-green);
+        font-weight: bold;
+      }
+
+      .solution-visual {
+        position: relative;
+      }
+
+      .course-preview {
+        background: var(--light-gray);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: var(--shadow-card);
+      }
+
+      .course-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .course-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-primary);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .course-title {
+        font-weight: 700;
+        color: var(--dark-gray);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+      }
+
+      .course-modules {
+        space-y: 1rem;
+      }
+
+      .module {
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .module-icon {
+        width: 30px;
+        height: 30px;
+        background: var(--accent-blue);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+      }
+
+      .testimonials-section {
+        padding: 4rem 0;
+        background: var(--light-gray);
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .testimonial-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: var(--shadow-card);
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .testimonial-quote {
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        line-height: 1.7;
+        color: var(--medium-gray);
+        margin-bottom: 1.5rem;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .author-avatar {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+        font-weight: 700;
+        flex-shrink: 0;
+        font-size: 1.2rem;
+      }
+
+      .author-info h4 {
+        font-weight: 600;
+        color: var(--dark-gray);
+        font-size: clamp(0.9rem, 2vw, 1rem);
+      }
+
+      .author-info p {
+        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+        color: var(--medium-gray);
+      }
+
+      .pricing-section {
+        padding: 4rem 0;
+        background: white;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .pricing-card {
+        background: white;
+        border: 2px solid #e5e7eb;
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .pricing-card.featured {
+        border-color: var(--primary-red);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .pricing-card.featured::before {
+        content: "Más Popular";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--gradient-primary);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .pricing-card h3 {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--dark-gray);
+      }
+
+      .pricing-price {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 800;
+        color: var(--primary-red);
+        margin-bottom: 0.5rem;
+      }
+
+      .pricing-period {
+        color: var(--medium-gray);
+        margin-bottom: 2rem;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+      }
+
+      .pricing-features {
+        list-style: none;
+        margin-bottom: 2rem;
+        text-align: left;
+      }
+
+      .pricing-features li {
+        padding: 0.5rem 0;
+        color: var(--medium-gray);
+        position: relative;
+        padding-left: 1.5rem;
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+      }
+
+      .pricing-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--success-green);
+        font-weight: bold;
+      }
+
+      .pricing-cta {
+        width: 100%;
+        background: var(--gradient-primary);
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .pricing-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-card);
+      }
+
+      .pricing-card:not(.featured) .pricing-cta {
+        background: transparent;
+        color: var(--primary-red);
+        border: 2px solid var(--primary-red);
+      }
+
+      .cta-section {
+        background: var(--gradient-primary);
+        padding: 4rem 0;
+        text-align: center;
+        color: white;
+      }
+
+      .cta-content h2 {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+
+      .cta-content p {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .footer {
+        background: var(--dark-gray);
+        color: white;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        color: var(--primary-red);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+      }
+
+      .footer-section a {
+        color: #94a3b8;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+      }
+
+      .footer-section a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #374151;
+        padding-top: 1rem;
+        text-align: center;
+        color: #94a3b8;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .fab {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        box-shadow: var(--shadow-hover);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .fab:hover {
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+
+        .cta-nav {
+          display: none;
+        }
+
+        .hero {
+          padding: 6rem 1rem 2rem;
+          min-height: 90vh;
+        }
+
+        .hero-stats {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+
+        .solution-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .pricing-card.featured {
+          transform: none;
+        }
+
+        .problem-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+          margin: 3rem auto 0;
+        }
+
+        .nav-container {
+          padding: 0 1rem;
+        }
+
+        .fab {
+          width: 50px;
+          height: 50px;
+          bottom: 1rem;
+          right: 1rem;
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .solution-content {
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+        }
+
+        .problem-section {
+          padding: 6rem 0;
+        }
+
+        .solution-section {
+          padding: 6rem 0;
+        }
+
+        .testimonials-section {
+          padding: 6rem 0;
+        }
+
+        .pricing-section {
+          padding: 6rem 0;
+        }
+
+        .cta-section {
+          padding: 6rem 0;
+        }
+
+        .container {
+          padding: 0 2rem;
+        }
+
+        .nav-container {
+          padding: 0 2rem;
+        }
+
+        .section-header {
+          margin-bottom: 4rem;
+        }
+
+        .hero {
+          padding: 2rem;
+        }
+
+        .pricing-card.featured {
+          transform: scale(1.05);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          max-width: 280px;
+          text-align: center;
+        }
+
+        .problem-card {
+          padding: 1.5rem;
+        }
+
+        .testimonial-card {
+          padding: 1.5rem;
+        }
+
+        .pricing-card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="logo">Cruz Roja Argentina</div>
+        <ul class="nav-menu">
+          <li><a href="#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="#problema" class="nav-link">Emergencias</a></li>
+          <li><a href="#solucion" class="nav-link">Capacitación</a></li>
+          <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+          <li><a href="#precios" class="nav-link">Planes</a></li>
+        </ul>
+        <a href="#registro" class="cta-nav">Comenzar Ahora</a>
+        <button class="mobile-menu">☰</button>
+      </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <h1>Protege a tu aula con <br />Primeros Auxilios</h1>
+        <p>
+          Capacitación online especializada para docentes. Aprende técnicas de
+          emergencia adaptadas al entorno escolar y obtén tu certificación
+          oficial.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#registro" class="btn-primary">Comenzar Curso Gratis</a>
+          <a href="#solucion" class="btn-secondary">Ver Programa</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">5,000+</span>
+            <span class="stat-label">Docentes certificados</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Satisfacción</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Acceso al curso</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">30 días</span>
+            <span class="stat-label">Garantía</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problema" class="problem-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Realidad Educativa</span>
+          <h2 class="section-title">
+            ¿Sabías que 3 de cada 5 docentes han enfrentado una emergencia
+            médica en el aula?
+          </h2>
+          <p class="section-description">
+            Las emergencias escolares son más comunes de lo que pensamos. Como
+            docente, tu preparación puede marcar la diferencia entre la vida y
+            la muerte.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <div class="problem-card">
+            <div class="problem-icon">🚨</div>
+            <h3>Emergencias Frecuentes</h3>
+            <p>
+              Desmayos, crisis alérgicas, accidentes menores y situaciones que
+              requieren acción inmediata ocurren regularmente en las escuelas.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">⏰</div>
+            <h3>Tiempo Crítico</h3>
+            <p>
+              Los primeros minutos son cruciales. La ambulancia puede tardar
+              10-15 minutos en llegar, pero tu intervención inmediata puede
+              salvar vidas.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">📚</div>
+            <h3>Falta de Preparación</h3>
+            <p>
+              Muchos docentes se sienten inseguros ante emergencias médicas por
+              falta de capacitación específica para el entorno escolar.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">🏫</div>
+            <h3>Responsabilidad Institucional</h3>
+            <p>
+              Como educadora, tienes la responsabilidad de cuidar la seguridad
+              de tus estudiantes durante el horario escolar.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">👨‍👩‍👧‍👦</div>
+            <h3>Confianza de Padres</h3>
+            <p>
+              Las familias confían en que sabrás actuar correctamente si sus
+              hijos necesitan atención médica urgente.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">🎯</div>
+            <h3>Desarrollo Profesional</h3>
+            <p>
+              La capacitación en primeros auxilios es valorada en el CV docente
+              y puede sumar puntaje en concursos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solucion" class="solution-section">
+      <div class="container">
+        <div class="solution-content">
+          <div class="solution-text">
+            <h2>Capacitación Especializada para Docentes</h2>
+            <p>
+              Nuestro curso de Primeros Auxilios está diseñado específicamente
+              para el entorno educativo. Aprenderás técnicas adaptadas a
+              situaciones escolares reales.
+            </p>
+
+            <ul class="features-list">
+              <li>Técnicas de RCP adaptadas para niños y adolescentes</li>
+              <li>Manejo de crisis alérgicas y asma en el aula</li>
+              <li>Protocolos de actuación ante accidentes escolares</li>
+              <li>Comunicación efectiva con servicios de emergencia</li>
+              <li>Casos prácticos con simulaciones escolares</li>
+              <li>Certificación oficial válida para CV docente</li>
+            </ul>
+
+            <div class="hero-cta">
+              <a href="#registro" class="btn-primary">Inscribirme Ahora</a>
+              <a href="#precios" class="btn-secondary">Ver Planes</a>
+            </div>
+          </div>
+
+          <div class="solution-visual">
+            <div class="course-preview">
+              <div class="course-header">
+                <div class="course-icon">🎓</div>
+                <div>
+                  <div class="course-title">Primeros Auxilios Escolares</div>
+                  <div style="color: var(--medium-gray); font-size: 0.9rem">
+                    Certificación Oficial
+                  </div>
+                </div>
+              </div>
+
+              <div class="course-modules">
+                <div class="module">
+                  <div class="module-icon">1</div>
+                  <div>Fundamentos de Primeros Auxilios</div>
+                </div>
+                <div class="module">
+                  <div class="module-icon">2</div>
+                  <div>RCP en Niños y Adolescentes</div>
+                </div>
+                <div class="module">
+                  <div class="module-icon">3</div>
+                  <div>Emergencias Respiratorias</div>
+                </div>
+                <div class="module">
+                  <div class="module-icon">4</div>
+                  <div>Accidentes y Traumatismos</div>
+                </div>
+                <div class="module">
+                  <div class="module-icon">5</div>
+                  <div>Protocolos Escolares</div>
+                </div>
+                <div class="module">
+                  <div class="module-icon">✓</div>
+                  <div>Examen y Certificación</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonios" class="testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Testimonios</span>
+          <h2 class="section-title">
+            Lo que dicen nuestras docentes certificadas
+          </h2>
+          <p class="section-description">
+            Historias reales de maestras que aplicaron sus conocimientos cuando
+            más se necesitaba
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "El mes pasado un alumno de 8 años se desmayó durante educación
+              física. Gracias a la capacitación de Cruz Roja supe exactamente
+              qué hacer: posición de seguridad, verificar signos vitales y
+              comunicarme con la familia. Los padres me agradecieron
+              infinitamente por mantener la calma y actuar correctamente."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">M</div>
+              <div class="author-info">
+                <h4>María Elena Rodríguez</h4>
+                <p>Maestra de 3º Grado - Villa Carlos Paz, Córdoba</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "Durante el recreo, una niña de mi clase tuvo una crisis alérgica
+              severa. Aplicando lo aprendido en el curso, identifiqué
+              rápidamente los síntomas, administré el EpiPen que tenía en su
+              mochila y llamé a emergencias. Los médicos me dijeron que mi
+              rápida actuación evitó una tragedia."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">C</div>
+              <div class="author-info">
+                <h4>Carolina Mendoza</h4>
+                <p>Maestra de 1º Grado - Rosario, Santa Fe</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "El curso online me permitió estudiar después de mis clases y en
+              los fines de semana. Los casos prácticos son muy realistas y
+              específicos para el ambiente escolar. Además, el certificado me
+              sumó puntos en el último concurso docente. Una inversión que vale
+              la pena para toda maestra comprometida."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">A</div>
+              <div class="author-info">
+                <h4>Andrea Giménez</h4>
+                <p>Maestra de 5º Grado - San Miguel de Tucumán</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "Un alumno se golpeó fuertemente la cabeza durante el recreo.
+              Gracias al curso reconocí inmediatamente los signos de una posible
+              conmoción cerebral, mantuve al niño despierto y en posición
+              adecuada hasta que llegó la ambulancia. La capacitación de Cruz
+              Roja me dio la confianza para actuar sin pánico."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">L</div>
+              <div class="author-info">
+                <h4>Laura Fernández</h4>
+                <p>Maestra de 4º Grado - La Plata, Buenos Aires</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "Como madre y docente, este curso me dio tranquilidad tanto en el
+              aula como en casa. Mis propios hijos saben que estoy preparada
+              para cualquier emergencia. Es increíble cómo la plataforma online
+              te permite practicar los procedimientos las veces que necesites
+              hasta dominarlos completamente."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">S</div>
+              <div class="author-info">
+                <h4>Silvia Castro</h4>
+                <p>Maestra de 2º Grado - Mendoza Capital</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "Durante una excursión educativa, un estudiante se cortó
+              profundamente con un vidrio. Aplicé correctamente las técnicas de
+              control de hemorragias que aprendí en el curso mientras
+              esperábamos al servicio médico. Los directivos de la escuela
+              quedaron muy conformes con mi actuación profesional."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">P</div>
+              <div class="author-info">
+                <h4>Patricia Morales</h4>
+                <p>Maestra de 6º Grado - Salta Capital</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="precios" class="pricing-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Planes de Capacitación</span>
+          <h2 class="section-title">
+            Elige el plan que mejor se adapte a tus necesidades
+          </h2>
+          <p class="section-description">
+            Opciones flexibles para que puedas capacitarte sin afectar tu rutina
+            docente
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Curso Básico</h3>
+            <div class="pricing-price">Gratis</div>
+            <div class="pricing-period">Acceso de por vida</div>
+
+            <ul class="pricing-features">
+              <li>Módulo introductorio de 2 horas</li>
+              <li>Técnicas básicas de primeros auxilios</li>
+              <li>Casos de emergencias escolares comunes</li>
+              <li>Certificado de participación digital</li>
+              <li>Acceso a materiales descargables</li>
+              <li>Comunidad online de docentes</li>
+            </ul>
+
+            <button class="pricing-cta">Comenzar Gratis</button>
+          </div>
+
+          <div class="pricing-card featured">
+            <h3>Certificación Oficial</h3>
+            <div class="pricing-price">$50,000</div>
+            <div class="pricing-period">Pago único</div>
+
+            <ul class="pricing-features">
+              <li>Curso completo de 8 horas académicas</li>
+              <li>Técnicas avanzadas de RCP pediátrica</li>
+              <li>Manejo de crisis alérgicas severas</li>
+              <li>Simulaciones interactivas realistas</li>
+              <li>Certificado oficial para CV docente</li>
+              <li>Válido para puntaje en concursos</li>
+              <li>Actualizaciones anuales incluidas</li>
+              <li>Soporte técnico prioritario</li>
+              <li>Acceso a webinars exclusivos</li>
+            </ul>
+
+            <button class="pricing-cta">Obtener Certificación</button>
+          </div>
+
+          <div class="pricing-card">
+            <h3>Plan Institucional</h3>
+            <div class="pricing-price">Consultar</div>
+            <div class="pricing-period">Para escuelas</div>
+
+            <ul class="pricing-features">
+              <li>Capacitación para todo el equipo docente</li>
+              <li>Adaptación a protocolos institucionales</li>
+              <li>Sesiones presenciales opcionales</li>
+              <li>Certificación grupal</li>
+              <li>Dashboard de seguimiento directivo</li>
+              <li>Descuentos por volumen</li>
+              <li>Capacitación para personal no docente</li>
+            </ul>
+
+            <button class="pricing-cta">Contactar Ventas</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>¿Lista para transformar tu aula en un espacio más seguro?</h2>
+          <p>
+            Únete a miles de docentes que ya confían en la capacitación de Cruz
+            Roja Argentina
+          </p>
+          <div class="hero-cta">
+            <a href="#registro" class="btn-primary">Comenzar Curso Gratis</a>
+            <a href="tel:+5493514123456" class="btn-secondary">Llamar Ahora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Cruz Roja Argentina</h3>
+            <p style="color: #94a3b8; margin-bottom: 1rem">
+              Capacitando profesionales de la educación para crear entornos
+              escolares más seguros desde 1880.
+            </p>
+            <a href="mailto:capacitacion@cruzroja.org.ar"
+              >capacitacion@cruzroja.org.ar</a
+            >
+            <a href="tel:+5411123456789">(011) 1234-5678</a>
+          </div>
+
+          <div class="footer-section">
+            <h3>Cursos</h3>
+            <a href="#basico">Curso Básico Gratuito</a>
+            <a href="#certificacion">Certificación Oficial</a>
+            <a href="#institucional">Plan Institucional</a>
+            <a href="#actualizacion">Cursos de Actualización</a>
+          </div>
+
+          <div class="footer-section">
+            <h3>Recursos</h3>
+            <a href="#blog">Blog Educativo</a>
+            <a href="#materiales">Materiales Descargables</a>
+            <a href="#webinars">Webinars Gratuitos</a>
+            <a href="#comunidad">Comunidad Docente</a>
+          </div>
+
+          <div class="footer-section">
+            <h3>Soporte</h3>
+            <a href="#faq">Preguntas Frecuentes</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#ayuda">Centro de Ayuda</a>
+            <a href="#requisitos">Requisitos Técnicos</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Cruz Roja Argentina. Todos los derechos reservados. |
+            Organización reconocida por el Ministerio de Educación Nacional
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      class="fab"
+      onclick="document.getElementById('inicio').scrollIntoView({behavior: 'smooth'})"
+    >
+      ↑
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector(".header");
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const navMenu = document.querySelector(".nav-menu");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.style.background = "rgba(255, 255, 255, 0.98)";
+            header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+          } else {
+            header.style.background = "rgba(255, 255, 255, 0.95)";
+            header.style.boxShadow = "none";
+          }
+        });
+
+        mobileMenu.addEventListener("click", function () {
+          navMenu.style.display =
+            navMenu.style.display === "flex" ? "none" : "flex";
+          if (navMenu.style.display === "flex") {
+            navMenu.style.position = "absolute";
+            navMenu.style.top = "100%";
+            navMenu.style.left = "0";
+            navMenu.style.right = "0";
+            navMenu.style.background = "white";
+            navMenu.style.flexDirection = "column";
+            navMenu.style.padding = "1rem";
+            navMenu.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.1)";
+            navMenu.style.zIndex = "999";
+          }
+        });
+
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+            if (window.innerWidth <= 768) {
+              navMenu.style.display = "none";
+            }
+          });
+        });
+
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in-up");
+            }
+          });
+        }, observerOptions);
+
+        document
+          .querySelectorAll(".problem-card, .testimonial-card, .pricing-card")
+          .forEach((card) => {
+            observer.observe(card);
+          });
+      });
+    </script>
+  </body>
+</html>
