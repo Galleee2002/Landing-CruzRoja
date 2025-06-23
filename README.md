@@ -246,6 +246,7 @@ php -S localhost:8000
 
 ## 🔗 Enlaces Importantes
 
+- **Plataforma de Capacitación**: [https://login-cruz-roja.vercel.app/](https://login-cruz-roja.vercel.app/)
 - **Cruz Roja Argentina**: https://www.cruzroja.org.ar/
 - **Email Capacitación**: capacitacion@cruzroja.org.ar
 - **Teléfono**: (011) 1234-5678
@@ -323,4 +324,4 @@ Desarrollado para **Cruz Roja Argentina** - Capacitación Docente
 
 > _"La preparación de hoy es la diferencia del mañana. Cada docente capacitado es un héroe potencial en el aula."_
 
-**[🚀 Comenzar Capacitación](https://www.cruzroja.org.ar/)**
+**[🚀 Comenzar Capacitación](https://login-cruz-roja.vercel.app/)**
