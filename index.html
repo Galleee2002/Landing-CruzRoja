@@ -6,6 +6,8 @@
     <title>
       Capacitación en Primeros Auxilios para Docentes - Cruz Roja Argentina
     </title>
+    <link rel="icon" type="image/png" href="https://www.cruzroja.org.ar/newDesign/wp-content/uploads/2019/01/favicon1.png" />
+    <link rel="shortcut icon" type="image/png" href="https://www.cruzroja.org.ar/newDesign/wp-content/uploads/2019/01/favicon1.png" />
     <style>
       * {
         margin: 0;
@@ -70,10 +72,11 @@
         color: var(--primary-red);
       }
 
-      .logo::before {
-        content: "✚";
+      .logo-icon {
+        width: 32px;
+        height: 32px;
         margin-right: 0.5rem;
-        font-size: 1.8rem;
+        object-fit: contain;
       }
 
       .nav-menu {
@@ -1107,7 +1110,10 @@
   <body>
     <header class="header">
       <nav class="nav-container">
-        <div class="logo">Cruz Roja Argentina</div>
+        <div class="logo">
+          <img src="https://www.cruzroja.org.ar/newDesign/wp-content/uploads/2019/01/favicon1.png" alt="Cruz Roja Argentina" class="logo-icon">
+          Cruz Roja Argentina
+        </div>
         <ul class="nav-menu">
           <li><a href="#inicio" class="nav-link">Inicio</a></li>
           <li><a href="#problema" class="nav-link">Emergencias</a></li>
