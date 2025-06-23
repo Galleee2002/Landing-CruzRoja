@@ -28,10 +28,11 @@ Capacitar a docentes con técnicas de primeros auxilios adaptadas al entorno esc
 1. **Hero Section**: Presentación principal con estadísticas
 2. **Problema**: Identificación de emergencias escolares comunes
 3. **Solución**: Presentación del curso y sus beneficios
-4. **Testimonios**: Experiencias reales de docentes certificadas
-5. **Precios**: Planes de capacitación disponibles
-6. **CTA Final**: Llamada a la acción principal
-7. **Footer**: Información de contacto y enlaces útiles
+4. **Videos Demostrativos**: Videos de muestra de técnicas de primeros auxilios
+5. **Testimonios**: Experiencias reales de docentes certificadas
+6. **Precios**: Planes de capacitación disponibles
+7. **CTA Final**: Llamada a la acción principal
+8. **Footer**: Información de contacto y enlaces útiles
 
 ## 🎨 Paleta de Colores
 
@@ -81,6 +82,10 @@ Capacitar a docentes con técnicas de primeros auxilios adaptadas al entorno esc
 
 ```
 Landing-CruzRoja/
+├── assets/             # Recursos multimedia
+│   ├── rcp.mp4        # Video demostración RCP (48MB)
+│   ├── atragantamiento.mp4  # Video maniobra Heimlich (17MB)
+│   └── explicacion.mp4      # Video motivacional (2.7MB)
 ├── index.html          # Archivo principal del sitio
 └── README.md          # Documentación del proyecto
 ```
@@ -119,6 +124,23 @@ Landing-CruzRoja/
 - Lista de beneficios con checkmarks
 - Preview del curso con módulos
 - CTAs secundarios
+
+### 🎥 Videos Section
+
+- 3 videos demostrativos locales (formato 9:16 vertical):
+  - **RCP (Reanimación Cardiopulmonar)**: Demostración de RCP en adulto mayor con paro cardíaco
+  - **Maniobra de Heimlich**: Procedimiento para atragantamiento en adulto mayor
+  - **¿Por qué inscribirse?**: Joven explicando los beneficios de capacitarse en el curso
+- Videos locales almacenados en `/assets/`
+- Thumbnails placeholder con gradientes de colores distintivos
+- Modal responsive que se abre al hacer click en cualquier card
+- Aspect ratio 9:16 optimizado para videos verticales
+- Botón de play interactivo con hover effects
+- Auto-reproducción al abrir modal
+- Cierre con tecla ESC o click fuera del video
+- Controles nativos del navegador
+- Descripción detallada de cada procedimiento
+- CTA integrada para ver el programa completo
 
 ### 💬 Testimonios
 
